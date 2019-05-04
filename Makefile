@@ -1,8 +1,15 @@
-.PHONY: all
+.PHONY: all Debug debug
 
-all: test
-	./$<
+#global const's
+TARGETS=test
+GCCKEYS=-L/System/Library/Frameworks -framework GLUT -framework OpenGL
+GCC=gcc
+#global var's
 
-test: test.cpp
-	#g++ $< -lglut -o $@
-	gcc -o $@ $< -L/System/Library/Frameworks -framework GLUT -framework OpenGL
+all: Debug
+Debug: debug
+debug: $(TARGETS)
+	./test
+
+%: %.cpp
+	$(GCC) -o $@ $< $(GCCKEYS)
