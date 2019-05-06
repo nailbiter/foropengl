@@ -1,7 +1,7 @@
 .PHONY: all Debug debug
 
 #global const's
-TARGETS=test
+TARGETS=test animation
 GCCKEYS=-L/System/Library/Frameworks -framework GLUT -framework OpenGL
 GCC=gcc
 #global var's
@@ -9,7 +9,8 @@ GCC=gcc
 all: Debug
 Debug: debug
 debug: $(TARGETS)
-	./test
+	#./test
+	./animation
 
 %: %.cpp
 	$(GCC) -o $@ $< $(GCCKEYS)

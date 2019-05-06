@@ -1,2 +1,5 @@
 .pulled_data.json
 test
+animation
+*.swp
+*.swo
