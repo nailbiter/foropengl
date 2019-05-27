@@ -1,7 +1,12 @@
 #include <cstdio>
 #include <cstdlib>
-#include <GLUT/glut.h>
 #include <cmath>
+#ifdef LINUX
+#include "GL/freeglut.h"
+#include "GL/gl.h"
+#else
+#include <GLUT/glut.h>
+#endif
 #define deg_to_rad(deg) (((deg)/360)*2*M_PI)
 #define rad_to_deg(rad) (((rad)/2/M_PI)*360)
 

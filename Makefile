@@ -1,16 +1,23 @@
-.PHONY: all Debug debug
+.PHONY: all
 
 #global const's
 TARGETS=test animation
-GCCKEYS=-L/System/Library/Frameworks -framework GLUT -framework OpenGL
 GCC=gcc
 #global var's
-
-all: Debug
-Debug: debug
-debug: $(TARGETS)
+UNAME=$(shell uname)
+ifeq ($(UNAME),Darwin)
+#Mac OS
+GCCKEYS=-L/System/Library/Frameworks -framework GLUT -framework OpenGL
+else
+#Linux
+GCCKEYS=-D LINUX -lglut -lGL -lm
+endif
+#procedures
+all: animation
 	#./test
 	./animation
 
+
+#main
 %: %.cpp
-	$(GCC) -o $@ $< $(GCCKEYS)
+	$(GCC) $< $(GCCKEYS) -o $@

@@ -1,0 +1,12 @@
+"atom-shell-commands":
+  commands: [
+    {
+      name: "compile"
+      command: "/usr/bin/make"
+      arguments: [
+      ]
+      options:
+        cwd: "{FileDir}"
+        keymap: 'ctrl-2'
+    }
+  ]
