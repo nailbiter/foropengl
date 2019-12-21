@@ -1,4 +1,4 @@
-.PHONY: all
+.PHONY: all docs
 
 #global const's
 TARGETS=test animation
@@ -16,6 +16,7 @@ endif
 all: animation
 	#./test
 	./animation
+docs: README.html
 
 
 #main
