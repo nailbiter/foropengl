@@ -1,11 +1,12 @@
-#include <cstdio>
-#include <cstdlib>
-#include <cmath>
+#include "stdio.h"
+#include "stdlib.h"
+#include "math.h"
+#define GL_SILENCE_DEPRECATION
 #ifdef LINUX
 #include "GL/freeglut.h"
 #include "GL/gl.h"
 #else
-#include <GLUT/glut.h>
+#include "GLUT/glut.h"
 #endif
 #define deg_to_rad(deg) (((deg)/360)*2*M_PI)
 #define rad_to_deg(rad) (((rad)/2/M_PI)*360)
@@ -26,10 +27,10 @@ void drawTriangle(){
     glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
 
     glBegin(GL_QUADS);
-        glVertex2f(-0.7+std::cos(deg_to_rad(angle)),0.7);
-        glVertex2f(-0.7+std::cos(deg_to_rad(angle)),-0.7);
-        glVertex2f(0.7+std::cos(deg_to_rad(angle)),-0.7);
-        glVertex2f(0.7+std::cos(deg_to_rad(angle)),0.7);
+        glVertex2f(-0.7+cos(deg_to_rad(angle)),0.7);
+        glVertex2f(-0.7+cos(deg_to_rad(angle)),-0.7);
+        glVertex2f(0.7+cos(deg_to_rad(angle)),-0.7);
+        glVertex2f(0.7+cos(deg_to_rad(angle)),0.7);
     glEnd();
 
     glFlush();
@@ -37,13 +38,10 @@ void drawTriangle(){
     glutPostRedisplay();
 }
 void keyEscape( unsigned char key, int x, int y ){
-    switch ( key )
-    {
-        case 113: // 'Q' key for escape
-            int windowID = glutCreateWindow ("triangle");
-            glutDestroyWindow (windowID);
-            exit(0);
-            break;
+    if( key == 113 ) {
+        int windowID = glutCreateWindow ("triangle");
+        glutDestroyWindow (windowID);
+        exit(0);
     }
 
     glutPostRedisplay();

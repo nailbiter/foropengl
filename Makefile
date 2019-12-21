@@ -7,7 +7,7 @@ GCC=gcc
 UNAME=$(shell uname)
 ifeq ($(UNAME),Darwin)
 #Mac OS
-GCCKEYS=-L/System/Library/Frameworks -framework GLUT -framework OpenGL
+GCCKEYS=-L/System/Library/Frameworks -framework GLUT -framework OpenGL -std=c99
 else
 #Linux
 GCCKEYS=-D LINUX -lglut -lGL -lm
@@ -20,5 +20,7 @@ docs: README.html
 
 
 #main
+%: %.c
+	$(GCC) $< $(GCCKEYS) -o $@
 %: %.cpp
 	$(GCC) $< $(GCCKEYS) -o $@
